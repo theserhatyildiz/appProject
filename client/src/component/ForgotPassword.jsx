@@ -15,7 +15,7 @@ export default function ForgotPassword() {
     const navigate = useNavigate();
     const loggedData = useContext(UserContext);
 
-    console.log(loggedData);
+    console.log("logged data:", loggedData);
 
     function handleInput(event) {
         setUserCreds((prevState) => {
