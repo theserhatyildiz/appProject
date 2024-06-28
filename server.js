@@ -137,7 +137,7 @@ app.post('/forgotpassword', (req, res) => {
             from: process.env.EMAIL_USER,
             to: email, // Use the user's email from the request
             subject: 'Şifrenizi Yenileme Linki',
-            text: `Galwin App şifre yenileme linkiniz: http://localhost:5173/resetpassword/${user._id}/${token}
+            text: `Galwin App şifre yenileme linkiniz: https://galwin-7487fa6a2294.herokuapp.com/resetpassword/${user._id}/${token}
             
             Bu link 1 gün için geçerlidir. Eğer şifre yenileme talebinde bulunmadıysanız, bu e-postayı dikkate almayınız.`
         };
