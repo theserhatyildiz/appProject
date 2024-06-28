@@ -3,7 +3,6 @@ import { UserContext } from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
-    // ------------------Variables------------------
     const [userCreds, setUserCreds] = useState({
         email: "",
     });
@@ -18,7 +17,6 @@ export default function ForgotPassword() {
 
     console.log(loggedData);
 
-    // ------------------Functions------------------
     function handleInput(event) {
         setUserCreds((prevState) => {
             return { ...prevState, [event.target.name]: event.target.value };
@@ -29,7 +27,6 @@ export default function ForgotPassword() {
         event.preventDefault();
         console.log(userCreds);
 
-        // ------------------Sending the data to API------------------
         fetch("https://galwin-7487fa6a2294.herokuapp.com/forgotpassword", {
             method: "POST",
             body: JSON.stringify(userCreds),
@@ -44,21 +41,23 @@ export default function ForgotPassword() {
                 setMessage({ type: "error", text: "Hatalı Şifre" });
             } else if (response.status === 500) {
                 setMessage({ type: "error", text: "Sunucu Hatası" });
+            } else {
+                return response.json();
             }
 
             setTimeout(() => {
                 setMessage({ type: "invisible-msg", text: "Dummy Msg" });
-            }, 100000);
+            }, 10000); // Adjusted timeout to 10 seconds
 
-            return response.json();
         })
         .then(data => {
-            if (data.Status === "Success") {
+            if (data && data.Status === "Success") {
                 setMessage({ type: "success", text: "Şifre yenileme emaili gönderildi! Spam dosyanızı kontrol edin!" });
             }
         })
         .catch(err => {
-            console.log(err);
+            console.error("Request failed", err);
+            setMessage({ type: "error", text: "Bir hata oluştu, lütfen tekrar deneyin." });
         });
     }
 
@@ -80,7 +79,6 @@ export default function ForgotPassword() {
                     <p>Üye misiniz? <Link to="/login">Giriş Yapın</Link></p>
                     <p className={message.type}>{message.text}</p>
                 </div>
-                
             </form>
         </section>
     );
