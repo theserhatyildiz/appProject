@@ -30,7 +30,7 @@ export default function ForgotPassword() {
         console.log(userCreds);
 
         // ------------------Sending the data to API------------------
-        fetch("http://localhost:8000/forgotpassword", {
+        fetch("https://galwin-7487fa6a2294.herokuapp.com/forgotpassword", {
             method: "POST",
             body: JSON.stringify(userCreds),
             headers: {

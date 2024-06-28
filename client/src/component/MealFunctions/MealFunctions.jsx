@@ -48,7 +48,7 @@ export default function MealFunctions() {
         const queryParams = new URLSearchParams(location.search);
         const eatenDateParam = queryParams.get("eatenDate");
 
-        fetch(`http://localhost:8000/track/${loggedData.loggedUser.userid}/${mealNumber}/${eatenDateParam}`, {
+        fetch(`https://galwin-7487fa6a2294.herokuapp.com/track/${loggedData.loggedUser.userid}/${mealNumber}/${eatenDateParam}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

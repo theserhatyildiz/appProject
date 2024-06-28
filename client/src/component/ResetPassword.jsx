@@ -20,7 +20,7 @@ export default function ResetPassword() {
         event.preventDefault();
         console.log(userCreds);
 
-        fetch(`http://localhost:8000/resetpassword/${id}/${token}`, {
+        fetch(`https://galwin-7487fa6a2294.herokuapp.com/resetpassword/${id}/${token}`, {
             method: "POST",
             body: JSON.stringify(userCreds),
             headers: { "Content-type": "application/json" }

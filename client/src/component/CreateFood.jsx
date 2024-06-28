@@ -41,7 +41,7 @@ export default function CreateFood() {
 
     // ------------------Sending the data to API------------------
 
-    fetch("http://localhost:8000/foods",{
+    fetch("https://galwin-7487fa6a2294.herokuapp.com/foods",{
         method:"POST",
         body:JSON.stringify(foodDetails),
         headers:{
